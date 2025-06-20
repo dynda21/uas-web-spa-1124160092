@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BeautyCare Pay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-rose-200 via-pink-200 to-rose-100 min-h-screen text-gray-800">
+
+  <!-- Header -->
+  <div class="text-center py-6">
+    <h1 class="text-2xl font-bold text-gray-700">Open Payment Portal</h1>
+    <p>Global Institute</p>
+    <p>(NIM: <strong>1124160092</strong>)</p>
+    <p>(Nama: <strong>Dinda Putri S.</strong>)</p>
+  </div>
+
+  <!-- Branding -->
+  <div class="text-center mb-6">
+    <div class="flex justify-center items-center gap-4">
+      <div class="bg-white rounded-full shadow w-16 h-16 flex items-center justify-center text-xs font-semibold">
+        <img src="assets/skincare-logo.jpg">
+      </div>
+      <div class="text-left">
+        <h2 class="text-3xl font-bold text-pink-700">BeautyCare Pay</h2>
+        <p class="text-sm">Pembayaran Mudah & Aman untuk Produk Kecantikan Anda</p>
+      </div>
+    </div>
+    <p class="mt-2 italic text-sm text-pink-800">Temukan pesona cantikmu lewat skincare & makeup berkualitas 💄</p>
+  </div>
+
+  <!-- Toggle Mode -->
+  <div class="text-center mb-6">
+    <button id="toggleMode" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 dark:bg-yellow-300 dark:text-black">🌗 Toggle Mode</button>
+  </div>
+
+  <!-- Form & Riwayat -->
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-6 px-6 pb-10">
+
+    <!-- Form -->
+    <div class="w-full md:w-1/2 bg-white rounded-xl shadow-lg p-6">
+      <h3 class="text-xl font-semibold text-pink-600 mb-4">Form Pembayaran</h3>
+      <form id="formPembayaran" class="space-y-4">
+        <input type="text" id="nama" placeholder="Nama pelanggan" required class="w-full p-2 border rounded">
+        <input type="email" id="email" placeholder="contoh@email.com" required class="w-full p-2 border rounded">
+        <select id="produk" required class="w-full p-2 border rounded">
+          <option value="">Pilih produk...</option>
+          <option value="Serum Wajah" data-harga="75000">Serum Wajah - Rp75.000</option>
+          <option value="Toner Glow" data-harga="50000">Toner Glow - Rp50.000</option>
+          <option value="Facial Wash" data-harga="60000">Facial Wash - Rp60.000</option>
+        </select>
+        <input type="number" id="jumlah" min="1" value="1" required class="w-full p-2 border rounded">
+
+        <!-- Metode Pembayaran -->
+        <p class="font-medium">Metode Pembayaran:</p>
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" onclick="setMetode('Transfer Bank')" class="border p-2 rounded bg-blue-50 hover:bg-blue-100">🏦 Transfer Bank</button>
+          <button type="button" onclick="setMetode('Dana')" class="border p-2 rounded bg-purple-50 hover:bg-purple-100">💸 Dana</button>
+          <button type="button" onclick="setMetode('OVO')" class="border p-2 rounded bg-purple-50 hover:bg-purple-100">📱 OVO</button>
+          <button type="button" onclick="setMetode('GoPay')" class="border p-2 rounded bg-purple-50 hover:bg-purple-100">💳 GoPay</button>
+        </div>
+        <input type="hidden" id="metode" value="Transfer Bank">
+
+        <button type="submit" class="bg-pink-500 text-white w-full py-2 rounded hover:bg-pink-600 mt-4">💰 Bayar Sekarang</button>
+      </form>
+    </div>
+
+    <!-- Riwayat -->
+    <div class="w-full md:w-1/2 bg-white rounded-xl shadow-lg p-6">
+      <h3 class="text-xl font-semibold text-pink-600 mb-4">Riwayat Transaksi</h3>
+      <div class="grid grid-cols-3 text-center mb-4 text-sm text-gray-700">
+        <div><p>Transaksi</p><p id="totalTransaksi" class="font-bold text-pink-700">0</p></div>
+        <div><p>Pendapatan</p><p id="totalPendapatan" class="font-bold text-green-700">Rp 0</p></div>
+        <div><p>Rata-rata</p><p id="rataRata" class="font-bold text-blue-700">Rp 0</p></div>
+      </div>
+      <div id="riwayatList" class="text-sm text-gray-600 space-y-2">
+        <p>Belum ada transaksi.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
